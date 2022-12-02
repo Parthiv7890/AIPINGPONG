@@ -1,4 +1,4 @@
-/*
+
 //created by prashant shukla
 
 var paddle2 =10,paddle1=10;
@@ -23,11 +23,26 @@ var ball = {
 
 function setup(){
   var canvas =  createCanvas(700,600);
+  canvas.center()
+  video = createCapture(VIDEO)
+  video.size(700,600)
+  video.hide()
+  canvas.parent('#canvas')
+  poseNet = ml5.poseNet(video,modelLoaded)
+  poseNet.on('pose',gotReuslts)
+  
+}
+function modelLoaded(){
+
+}
+function gotReuslts(){
+
 }
 
-
 function draw(){
+image(video,0,0,700,600)
 
+/*
  background(0); 
 
  fill("black");
@@ -75,7 +90,7 @@ function reset(){
    ball.y = height/2+100;
    ball.dx=3;
    ball.dy =3;
-   
+   */
 }
 
 
@@ -162,4 +177,4 @@ function paddleInCanvas(){
   if(mouseY < 0){
     mouseY =0;
   }  
-}*/
+}
